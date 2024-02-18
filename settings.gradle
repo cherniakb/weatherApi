@@ -1,0 +1,5 @@
+rootProject.name = 'weatherApi'
+include 'infrastructure'
+include 'domain'
+include 'application'
+
