@@ -3,7 +3,6 @@ package com.weather.service;
 import com.weather.error.MetricValidationError;
 import com.weather.model.Metric;
 import com.weather.model.RegisterSensorMetricCommand;
-import com.weather.model.Sensor;
 import com.weather.model.SensorMetricType;
 import com.weather.repository.MetricRepository;
 import com.weather.validator.MetricValidator;
