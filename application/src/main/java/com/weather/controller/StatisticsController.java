@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 
-@RestController("/statistics")
+@RestController
 public class StatisticsController {
     private final StatisticsService statisticsService;
 

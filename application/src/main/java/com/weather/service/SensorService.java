@@ -1,5 +1,6 @@
 package com.weather.service;
 
+import com.weather.error.SensorValidationError;
 import com.weather.model.RegisterSensorCommand;
 import com.weather.model.Sensor;
 import com.weather.repository.SensorRepository;
@@ -19,7 +20,12 @@ public class SensorService {
     }
 
     public void registerSensor(RegisterSensorCommand sensorCommand) {
-        sensorValidator.validateSensor(sensorCommand);
+        try {
+            sensorValidator.validateSensor(sensorCommand);
+        } catch (IllegalArgumentException e) {
+            throw new SensorValidationError(e.getMessage());
+        }
+
         sensorRepository.registerSensor(sensorCommand);
     }
 

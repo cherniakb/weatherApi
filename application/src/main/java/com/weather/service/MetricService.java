@@ -1,5 +1,6 @@
 package com.weather.service;
 
+import com.weather.error.MetricValidationError;
 import com.weather.model.Metric;
 import com.weather.model.RegisterSensorMetricCommand;
 import com.weather.model.SensorMetricType;
@@ -21,7 +22,11 @@ public class MetricService {
     }
 
     public void registerMetric(RegisterSensorMetricCommand registerSensorMetricCommand) {
-        metricValidator.validateMetric(registerSensorMetricCommand);
+        try {
+            metricValidator.validateMetric(registerSensorMetricCommand);
+        } catch (IllegalArgumentException e) {
+            throw new MetricValidationError(e.getMessage());
+        }
 
         metricRepository.registerSensorMetric(registerSensorMetricCommand);
     }
